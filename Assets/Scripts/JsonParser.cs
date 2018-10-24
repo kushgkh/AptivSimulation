@@ -178,6 +178,8 @@ public class JsonParser : MonoBehaviour
         // Creates Object from json string 
         JObject o1 = (JObject)JToken.Parse(json);
 
+
+
         // Obtain Host Information
         hostSpeed = (Newtonsoft.Json.Linq.JArray)o1["hostInfo"]["speed"];
         hostXLoc = (Newtonsoft.Json.Linq.JArray)o1["hostProps"]["x"];
@@ -657,7 +659,7 @@ public class JsonParser : MonoBehaviour
             Debug.Log("Checking if it is time to spawn");
             float targetTime = sortedStructsTwo[structCount].sTime;
             // Debug.Log(deltaTime);
-            Debug.Log(Time.fixedTime);
+            //Debug.Log(Time.fixedTime);
             // Debug.Log("Time in Range is : " + targetTime + " And time is " + Time.time + " but adjusted time is : " + (Time.time - deltaTime));
             if (Time.fixedTime > 3 * time)
             {

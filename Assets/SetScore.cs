@@ -7,7 +7,7 @@ public class SetScore : MonoBehaviour {
 
     public Text NumberObjectsText;
     public Text DangerText;
-    int last = 0;
+    int last = -2;
     Text myText;
 	// Use this for initialization
 	void Start () {
@@ -16,23 +16,24 @@ public class SetScore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        int objects = spawn.carCount;
+        int objects = spawn.dangerCars;
 
         if(objects != last)
         {
+            last = objects;
             myText.text = "Score: " + spawn.carCount;
             myText.color = new Color(objects * 0.1f, 0, 0);
-            if (objects > 10)
+            if (objects > 1)
             {
                 DangerText.text = "High";
                 DangerText.color = new Color(1, 0, 0);
             }
-            else if (objects > 5)
+            else if (objects > 0)
             {
                 DangerText.text = "Medium";
                 DangerText.color = new Color(0.5f, 0.2f, 0);
             }
-            else if (objects > 0)
+            else if (objects > -1)
             {
                 DangerText.text = "Low";
                 DangerText.color = new Color(0, 1f, 0);
