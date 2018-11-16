@@ -13,19 +13,48 @@ public class passBy : MonoBehaviour {
 	void Start () {
         oldpos = transform.position.x;
         movepos = transform.position.x;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         //spawn.zcount += this.transform.position.z;
         //+=0.015f;
-        frac += 0.025f;
+        frac += 0.020f;
         transform.position = new Vector3(Mathf.Lerp(oldpos, movepos, frac), transform.position.y, transform.position.z - Random.value);
         float val = Random.value * 100;
-        
+        float z = transform.position.x;
+        if(z > 4 && GazeData.quad == 2 ) 
+        {
+
+            MeshRenderer rend = GetComponentInChildren<MeshRenderer>();
+            //Set the main Color of the Material to green
+
+            rend.material.shader = Shader.Find("_Color");
+            rend.material.SetColor("_Color", Color.green);
+        }
+        else if (Mathf.Abs(z) < 4 && GazeData.quad == 1)
+        {
+
+            MeshRenderer rend = GetComponentInChildren<MeshRenderer>();
+            //Set the main Color of the Material to green
+
+            rend.material.shader = Shader.Find("_Color");
+            rend.material.SetColor("_Color", Color.green);
+        }
+        else if (z < -4 && GazeData.quad == 0)
+        {
+
+            MeshRenderer rend = GetComponentInChildren<MeshRenderer>();
+            //Set the main Color of the Material to green
+
+            rend.material.shader = Shader.Find("_Color");
+            rend.material.SetColor("_Color", Color.green);
+        }
         //val 98
-        if(val > 98 && frac > 1 && transform.position.z > 20)
+        if (val > 98 && frac > 1 && transform.position.z > 20)
         {
             frac = 0;
             oldpos = transform.position.x;
@@ -64,7 +93,7 @@ public class passBy : MonoBehaviour {
         }
 
 
-        if (transform.position.z < -7)
+        if (transform.position.z < -10)
         {
             spawn.carCount -= 1;
             spawn.dangerCars -= 1;

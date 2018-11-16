@@ -244,10 +244,10 @@ public class JsonParser : MonoBehaviour
             }
         }
 
-        Debug.Log("Max X is : " + maxX);
-        Debug.Log("Min X is : " + minX);
-        Debug.Log("Max Y is : " + maxY);
-        Debug.Log("Min Y is : " + minY);
+      //  Debug.Log("Max X is : " + maxX);
+      //  Debug.Log("Min X is : " + minX);
+       // Debug.Log("Max Y is : " + maxY);
+       // Debug.Log("Min Y is : " + minY);
 
         endText.transform.SetParent(hostObject.transform);
 
@@ -293,7 +293,7 @@ public class JsonParser : MonoBehaviour
 
         the_mesh.RecalculateBounds();
 
-        Debug.Log("The mesh has been set with max x : " + maxX + " min x : " + minX + " max y : " + maxY + " min Y : " + minY);
+        //Debug.Log("The mesh has been set with max x : " + maxX + " min x : " + minX + " max y : " + maxY + " min Y : " + minY);
 
         // handle path line (where hostObject follows)
         LineRenderer lineRenderer = path.GetComponent<LineRenderer>();
@@ -514,7 +514,7 @@ public class JsonParser : MonoBehaviour
         sw.WriteLine("ID" + "\t" + "Lat" + "\t" + "Long" + "\t" + "Speed" + "\t" + "Heading" + "\t" + "Length" + "\t" + "Width" + "\t" + "Time Created" + "\t" + "Time Updated");
         sw.Flush();
 
-        Time.timeScale = 0.5f; 
+        Time.timeScale = 1f; 
     } // end of Start function 
 
 
@@ -603,7 +603,7 @@ public class JsonParser : MonoBehaviour
             // Create new Object 
             if (timeToSpawn)
             {
-                Debug.Log("It is time to spawn, and I will now spawn everything in targetTimeIndices");
+                //Debug.Log("It is time to spawn, and I will now spawn everything in targetTimeIndices");
                 // Go through all indices that are ready to be spawned 
                 foreach (var i in targetTimeIndices)
                 {
@@ -656,7 +656,7 @@ public class JsonParser : MonoBehaviour
         // make sure here that sortedStructs2 is within bounds also for tomorrow figure out the host situation (where its at array number wise) 
         if (structCount < sortedStructsTwo.Count)
         {
-            Debug.Log("Checking if it is time to spawn");
+            //Debug.Log("Checking if it is time to spawn");
             float targetTime = sortedStructsTwo[structCount].sTime;
             // Debug.Log(deltaTime);
             //Debug.Log(Time.fixedTime);
@@ -664,7 +664,7 @@ public class JsonParser : MonoBehaviour
             if (Time.fixedTime > 3 * time)
             {
                 time++;
-                Debug.Log("Something should be spawning fam");
+                //Debug.Log("Something should be spawning fam");
                 timeToSpawn = true;
                 targetTimeIndices = sortedStructsTwo[structCount].sIndicies;
                 currentArrayNumbers = sortedStructsTwo[structCount].sArrayNums;
@@ -753,7 +753,7 @@ public class JsonParser : MonoBehaviour
 
     void updateObjectMovement()
     {
-        Debug.Log("I am in the beginning of the function updateObjectMovement with the object at array Number ");
+        //Debug.Log("I am in the beginning of the function updateObjectMovement with the object at array Number ");
             //JToken timeToUpdateAt = objUpdateTime[arrayNumber][indexInArray];
         JToken timeToUpdateAt = timeUpdateStructFinal[0].sTime;
         //Debug.Log("Trying to update objects at time " + timeToUpdateAt + " , but time is " + (Time.time - deltaTime));

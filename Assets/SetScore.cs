@@ -7,21 +7,26 @@ public class SetScore : MonoBehaviour {
 
     public Text NumberObjectsText;
     public Text DangerText;
+    public static string drowsyScore;
     int last = -2;
     Text myText;
 	// Use this for initialization
 	void Start () {
         myText = GetComponent<Text>();
+        DangerText.text = "Low";
+        DangerText.color = new Color(0, 1f, 0);
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         int objects = spawn.dangerCars;
 
-        if(objects != last)
+        myText.text = "Driver Awareness: " + drowsyScore;
+
+        if (objects != last)
         {
             last = objects;
-            myText.text = "Score: " + spawn.carCount;
+           
             myText.color = new Color(objects * 0.1f, 0, 0);
             if (objects > 1)
             {
